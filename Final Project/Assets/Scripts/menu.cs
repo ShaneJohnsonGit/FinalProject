@@ -19,4 +19,8 @@ public class menu : MonoBehaviour
             Application.Quit(); //does not work in the editor, it works when you compile
 #endif
     }
+    public void credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

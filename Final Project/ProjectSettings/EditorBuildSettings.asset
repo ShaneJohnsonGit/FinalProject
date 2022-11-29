@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 48685588e68442240be5449f9d75c72c
+  - enabled: 1
+    path: Assets/Scenes/level 2.unity
+    guid: ee459221373b62d42800ff5501605399
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 9858fc684fb94474e8d627b43ae2c79b
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 2d5d865d55cd627478a1fe4951022c21
   m_configObjects: {}

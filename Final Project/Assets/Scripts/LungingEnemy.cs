@@ -37,19 +37,19 @@ public class LungingEnemy : MonoBehaviour
             rb.AddForce(Vector2.right * 5);
             swapFace();
         }
-        if (Vector3.Distance(transform.position, target.transform.position) < 3 &&lungeAvailable && transform.position.y > target.transform.position.y)
+        if (Vector3.Distance(transform.position, target.transform.position) < 4 &&lungeAvailable && transform.position.y > target.transform.position.y)
         {
             if (transform.position.x > target.transform.position.x)
             {
-                rb.AddForce(Vector2.left * 300);
+                rb.AddForce(Vector2.left * 500);
                 lungeAvailable = false;
-                Invoke("Cooldown", 1.0f);
+                Invoke("Cooldown", .5f);
             }
             else
             {
-                rb.AddForce(Vector2.right * 300);
+                rb.AddForce(Vector2.right * 500);
                 lungeAvailable = false;
-                Invoke("Cooldown", 1.0f);
+                Invoke("Cooldown", .5f);
             }
 
         }

@@ -7,10 +7,11 @@ public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
     bool attack;
-    Collider2D collider;
+    new Collider2D collider;
+    AudioSource soundfx;
     void Start()
     {
-        
+        soundfx = GameObject.Find("Weapon").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,8 +23,11 @@ public class Weapon : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
         if (attack)
+        {
+            soundfx.Play();
+        }
+        if (attack && collider != null)
         {
             Attack(collider);
         }
@@ -37,6 +41,8 @@ public class Weapon : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.GameObject());
+            collider = null;
+            
         }
         
     } 
