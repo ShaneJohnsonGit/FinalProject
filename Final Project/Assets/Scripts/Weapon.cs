@@ -9,9 +9,14 @@ public class Weapon : MonoBehaviour
     bool attack;
     new Collider2D collider;
     AudioSource soundfx;
+    Animator anim;
+    ParticleSystem part;
     void Start()
     {
+        anim = GetComponentInParent<Animator>();
         soundfx = GameObject.Find("Weapon").GetComponent<AudioSource>();
+        part =GameObject.Find("Weapon").GetComponent<ParticleSystem>();
+       
     }
 
     // Update is called once per frame
@@ -26,11 +31,15 @@ public class Weapon : MonoBehaviour
         if (attack)
         {
             soundfx.Play();
+            part.Play();
+            StartCoroutine(Animation());
+            if (collider != null)
+            {
+
+                Attack(collider);
+            }
         }
-        if (attack && collider != null)
-        {
-            Attack(collider);
-        }
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -40,10 +49,18 @@ public class Weapon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            
             Destroy(collision.GameObject());
             collider = null;
             
         }
         
-    } 
+    }
+    
+    IEnumerator Animation()
+    {
+        anim.SetBool("isAttack", true);
+        yield return new WaitForSeconds(.5f);
+        anim.SetBool("isAttack", false);
+    }
 }
